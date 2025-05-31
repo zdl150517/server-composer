@@ -3,7 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 import { type CpuSelectFieldProps, CpuType } from "./types";
 export const CpuSelectField: FC<CpuSelectFieldProps> = ({
-	value,
+	value = CpuType.POWER,
 	handleCpuChange,
 }) => {
 	return (

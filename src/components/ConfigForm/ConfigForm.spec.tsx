@@ -5,6 +5,7 @@ describe("ConfigForm component", () => {
 	it("renders child component", () => {
 		render(<ConfigForm />);
 		expect(screen.getByLabelText(/CPU/)).toBeVisible();
+		expect(screen.getByLabelText(/Memory Size/)).toBeVisible();
 	});
 
 	it("renders form submit button", () => {

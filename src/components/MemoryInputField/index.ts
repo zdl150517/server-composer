@@ -1,1 +1,1 @@
-export {};
+export { MemoryInputField } from "./MemoryInputField";
