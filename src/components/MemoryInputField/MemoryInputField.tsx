@@ -37,8 +37,9 @@ export const MemoryInputField: FC<MemoryInputFieldProps> = ({
 	value = 4096,
 	handleMemorySizeChange,
 }) => {
-	const [memorySize, setMemorySize] = useState(value);
-	const helperText = getMemorySizeErrorReason(memorySize);
+	const [helperText, setHelperText] = useState<string | undefined>(
+		getMemorySizeErrorReason(value),
+	);
 
 	return (
 		<NumericFormat
@@ -52,12 +53,13 @@ export const MemoryInputField: FC<MemoryInputFieldProps> = ({
 					return;
 				}
 
-				setMemorySize(floatValue);
-				handleMemorySizeChange(floatValue);
+				const errorReason = getMemorySizeErrorReason(floatValue);
+				setHelperText(errorReason);
+				handleMemorySizeChange(floatValue, Boolean(errorReason));
 			}}
 			required
 			thousandSeparator
-			value={memorySize}
+			value={value}
 			{...muiTextFieldProps}
 		/>
 	);

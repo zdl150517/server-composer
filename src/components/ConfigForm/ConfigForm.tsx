@@ -7,7 +7,7 @@ import type { ConfigFormProps } from "./types";
 
 export const ConfigForm: FC<ConfigFormProps> = ({ handlers, config }) => {
 	const { setCpu, setGpu, setMemory, submit } = handlers;
-	const { cpu, memorySize, hasGpuAccelerator } = config;
+	const { cpu, memorySize, hasGpuAccelerator, hasError } = config;
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -27,7 +27,7 @@ export const ConfigForm: FC<ConfigFormProps> = ({ handlers, config }) => {
 					handleGpuToggleChange={setGpu}
 				/>
 			</Stack>
-			<Button variant="outlined" type="submit">
+			<Button disabled={hasError} variant="outlined" type="submit">
 				Submit
 			</Button>
 		</Box>

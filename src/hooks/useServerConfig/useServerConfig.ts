@@ -28,7 +28,8 @@ const reducer = (state: State, action: Action): State => {
 				...state,
 				config: {
 					...state.config,
-					memorySize: action.payload,
+					memorySize: action.payload.value,
+					hasError: action.payload.hasError,
 				},
 			};
 		case "SET_GPU":
@@ -55,8 +56,11 @@ export const useServerConfig = () => {
 			dispatch({ type: "SET_CPU", payload: cpu });
 		}, []),
 
-		setMemory: useCallback((memory: number) => {
-			dispatch({ type: "SET_MEMORY", payload: memory });
+		setMemory: useCallback((memory: number, hasError: boolean) => {
+			dispatch({
+				type: "SET_MEMORY",
+				payload: { value: memory, hasError: hasError },
+			});
 		}, []),
 
 		setGpu: useCallback((hasGpu: boolean) => {
