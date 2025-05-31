@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { ModelOptionResult } from "./ModelOptionResult";
+import { ServerModels } from "appConstants";
 
 describe("ModelOptionResult", () => {
 	it("renders a list of items", () => {
-		const items = ["Tower Server", "4U Rack Server", "Mainframe"];
+		const items = [
+			ServerModels.HighDensityServer,
+			ServerModels.MainFrame,
+			ServerModels.TowerServer,
+		];
 
 		render(<ModelOptionResult items={items} />);
 
@@ -13,7 +18,7 @@ describe("ModelOptionResult", () => {
 	});
 
 	it("renders an empty list when items is empty", () => {
-		const items: string[] = [];
+		const items: ServerModels[] = [];
 
 		render(<ModelOptionResult items={items} />);
 

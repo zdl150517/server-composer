@@ -1,9 +1,9 @@
 import type { FC } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-
-import { type CpuSelectFieldProps, CpuType } from "./types";
+import { CpuType } from "appConstants";
+import type { CpuSelectFieldProps } from "./types";
 export const CpuSelectField: FC<CpuSelectFieldProps> = ({
-	value = CpuType.POWER,
+	value,
 	handleCpuChange,
 }) => {
 	return (

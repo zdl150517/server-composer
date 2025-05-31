@@ -1,10 +1,5 @@
+import type { CpuType } from "appConstants";
 export type CpuSelectFieldProps = {
-	value?: CpuType;
-	handleCpuChange: (cpu: string) => void;
+	value: CpuType | "";
+	handleCpuChange: (cpu: CpuType | "") => void;
 };
-
-export enum CpuType {
-	X86 = "X86",
-	POWER = "Power",
-	ARM = "ARM",
-}

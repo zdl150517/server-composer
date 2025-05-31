@@ -10,6 +10,7 @@ export const GpuToggleField: FC<GpuToggleFieldProps> = ({
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setChecked(event.target.checked);
+		handleGpuToggleChange(event.target.checked);
 	};
 
 	return (
