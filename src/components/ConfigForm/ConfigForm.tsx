@@ -1,6 +1,7 @@
 import { Box, Stack, Button } from "@mui/material";
 import { CpuSelectField } from "../CpuSelectField";
 import { MemoryInputField } from "../MemoryInputField";
+import { GpuToggleField } from "../GpuToggleField";
 
 export const ConfigForm = () => {
 	return (
@@ -8,6 +9,7 @@ export const ConfigForm = () => {
 			<Stack direction="row" spacing={2} alignItems="flex-start">
 				<CpuSelectField handleCpuChange={console.log} />
 				<MemoryInputField handleMemorySizeChange={console.log} />
+				<GpuToggleField handleGpuToggleChange={console.log} />
 			</Stack>
 			<Button variant="outlined" type="submit">
 				Submit

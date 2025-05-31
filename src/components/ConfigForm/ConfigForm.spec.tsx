@@ -6,6 +6,7 @@ describe("ConfigForm component", () => {
 		render(<ConfigForm />);
 		expect(screen.getByLabelText(/CPU/)).toBeVisible();
 		expect(screen.getByLabelText(/Memory Size/)).toBeVisible();
+		expect(screen.getByText(/GPU Accelerator Card/)).toBeVisible();
 	});
 
 	it("renders form submit button", () => {
