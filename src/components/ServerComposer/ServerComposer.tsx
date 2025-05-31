@@ -1,5 +1,6 @@
-import { Box, List, ListItem, Typography, Divider } from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 import { ConfigForm } from "../ConfigForm";
+import { ModelOptionResult } from "../ModelOptionResult";
 export const ServerComposer = () => {
 	return (
 		<Box>
@@ -7,11 +8,9 @@ export const ServerComposer = () => {
 			<ConfigForm />
 			<Divider />
 			<Typography variant="h3">Server Model Options</Typography>
-			<List>
-				<ListItem>Tower Server</ListItem>
-				<ListItem>4U Rack Server</ListItem>
-				<ListItem>Mainframe</ListItem>
-			</List>
+			<ModelOptionResult
+				items={["Tower Server", "4U Rack Server", "Mainframe"]}
+			/>
 		</Box>
 	);
 };
