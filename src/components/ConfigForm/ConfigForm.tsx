@@ -16,20 +16,22 @@ export const ConfigForm: FC<ConfigFormProps> = ({ handlers, config }) => {
 
 	return (
 		<Box component="form" onSubmit={handleSubmit}>
-			<Stack direction="row" spacing={2} alignItems="flex-start">
-				<CpuSelectField value={cpu} handleCpuChange={setCpu} />
-				<MemoryInputField
-					value={memorySize}
-					handleMemorySizeChange={setMemory}
-				/>
-				<GpuToggleField
-					value={hasGpuAccelerator}
-					handleGpuToggleChange={setGpu}
-				/>
+			<Stack alignItems="flex-start" spacing={2}>
+				<Stack direction="row" spacing={2} alignItems="flex-start">
+					<CpuSelectField value={cpu} handleCpuChange={setCpu} />
+					<MemoryInputField
+						value={memorySize}
+						handleMemorySizeChange={setMemory}
+					/>
+					<GpuToggleField
+						value={hasGpuAccelerator}
+						handleGpuToggleChange={setGpu}
+					/>
+				</Stack>
+				<Button disabled={hasError} variant="outlined" type="submit">
+					Submit
+				</Button>
 			</Stack>
-			<Button disabled={hasError} variant="outlined" type="submit">
-				Submit
-			</Button>
 		</Box>
 	);
 };

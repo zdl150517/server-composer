@@ -6,14 +6,13 @@ import { evaluateConfigOptions } from "./evaluateConfigOptions";
 export const initialState: State = {
 	config: {
 		cpu: "",
-		memorySize: 4096,
+		memorySize: undefined,
 		hasGpuAccelerator: false,
 	},
 	results: [],
 };
 
 export const reducer = (state: State, action: Action): State => {
-	console.log(action.type);
 	switch (action.type) {
 		case "SET_CPU":
 			return {

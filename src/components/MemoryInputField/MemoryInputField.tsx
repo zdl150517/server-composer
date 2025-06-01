@@ -6,13 +6,14 @@ import { isNumberPowerOfTwo } from "../../utils";
 import type { MemoryInputFieldProps } from "./types";
 
 const muiTextFieldProps = {
-	sx: { flexGrow: 1 },
+	sx: { flexGrow: 1, width: "300px" },
 	label: "Memory Size",
 	id: "memory-size",
+	required: true,
 	fullWidth: true,
 	slotProps: {
 		input: {
-			endAdornment: <InputAdornment position="start">MB</InputAdornment>,
+			endAdornment: <InputAdornment position="end">MB</InputAdornment>,
 		},
 	},
 };
@@ -34,11 +35,11 @@ export const getMemorySizeErrorReason = (size: number): string | undefined => {
 };
 
 export const MemoryInputField: FC<MemoryInputFieldProps> = ({
-	value = 4096,
+	value,
 	handleMemorySizeChange,
 }) => {
 	const [helperText, setHelperText] = useState<string | undefined>(
-		getMemorySizeErrorReason(value),
+		value !== undefined ? getMemorySizeErrorReason(value) : undefined,
 	);
 
 	return (
@@ -57,7 +58,6 @@ export const MemoryInputField: FC<MemoryInputFieldProps> = ({
 				setHelperText(errorReason);
 				handleMemorySizeChange(floatValue, Boolean(errorReason));
 			}}
-			required
 			thousandSeparator
 			value={value}
 			{...muiTextFieldProps}

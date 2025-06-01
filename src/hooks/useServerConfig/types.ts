@@ -14,7 +14,7 @@ export type Action =
 
 export type ServerConfig = {
 	cpu: CpuType | "";
-	memorySize: number;
+	memorySize?: number;
 	hasGpuAccelerator: boolean;
 	hasError?: boolean;
 };

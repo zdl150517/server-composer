@@ -15,6 +15,10 @@ export const evaluateConfigOptions = (
 		ServerModels.TowerServer,
 	];
 
+	if (!cpu || !memorySize) {
+		return NO_OPTIONS;
+	}
+
 	// Assuming we do not allow any model by default, instead of allowing while not prohibited, which
 	// cause conflict for the example 3 result and rule 1.
 	let options = new Set<ServerModels>();

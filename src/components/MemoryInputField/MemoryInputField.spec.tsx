@@ -3,8 +3,10 @@ import { MemoryInputField } from "./MemoryInputField";
 import userEvent from "@testing-library/user-event";
 
 describe("MemoryInputField component", () => {
-	it("renders component with default memory size value", () => {
-		render(<MemoryInputField handleMemorySizeChange={jest.fn()} />);
+	it("renders component with given memory size value", () => {
+		render(
+			<MemoryInputField value={4096} handleMemorySizeChange={jest.fn()} />,
+		);
 		expect(screen.getByLabelText(/Memory Size/)).toBeVisible();
 		expect(screen.getByDisplayValue("4,096")).toBeVisible();
 	});

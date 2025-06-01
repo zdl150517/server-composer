@@ -2,6 +2,15 @@ import { evaluateConfigOptions } from "./evaluateConfigOptions";
 import { CpuType, ServerModels } from "appConstants";
 
 describe("evaluateConfigOptions", () => {
+	it("returns returns 'No Options' if cpu or memory size input is not valid", () => {
+		const config = {
+			cpu: "" as const,
+			memorySize: undefined,
+			hasGpuAccelerator: false,
+		};
+		expect(evaluateConfigOptions(config)).toBe("No Options");
+	});
+
 	describe("can pass cases for rule 1", () => {
 		it("can pass provided Example 4 and return High Density only", () => {
 			const config = {

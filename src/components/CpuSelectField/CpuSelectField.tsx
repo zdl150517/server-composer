@@ -7,7 +7,7 @@ export const CpuSelectField: FC<CpuSelectFieldProps> = ({
 	handleCpuChange,
 }) => {
 	return (
-		<FormControl sx={{ flexGrow: 1 }} fullWidth required>
+		<FormControl sx={{ flexGrow: 0, minWidth: "100px" }} required>
 			<InputLabel id="cpu-models">CPU</InputLabel>
 			<Select
 				labelId="cpu-models"

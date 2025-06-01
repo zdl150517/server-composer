@@ -15,7 +15,7 @@ export const GpuToggleField: FC<GpuToggleFieldProps> = ({
 
 	return (
 		<FormControlLabel
-			sx={{ flexGrow: 1 }}
+			sx={{ flexGrow: 0 }}
 			control={<Checkbox checked={checked} onChange={handleChange} />}
 			label={<Typography noWrap>GPU Accelerator Card</Typography>}
 		/>

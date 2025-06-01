@@ -12,20 +12,20 @@ describe("CpuSelectField component", () => {
 		expect(screen.getByText("Power")).toBeVisible();
 	});
 
-	it("renders all three options", async () => {
+	it("renders all three options", () => {
 		render(<CpuSelectField value="" handleCpuChange={jest.fn()} />);
-		userEvent.click(await screen.findByLabelText(/CPU/));
-		expect(await screen.findByText("ARM")).toBeVisible();
-		expect(await screen.findByText("X86")).toBeVisible();
+		userEvent.click(screen.getByLabelText(/CPU/));
+		expect(screen.getByText("ARM")).toBeVisible();
+		expect(screen.getByText("X86")).toBeVisible();
 		expect(screen.getByText("Power")).toBeVisible();
 	});
 
-	it("triggers handlers on selecting new options", async () => {
+	it("triggers handlers on selecting new options", () => {
 		const mockHandler = jest.fn();
 		render(<CpuSelectField value="" handleCpuChange={mockHandler} />);
-		userEvent.click(await screen.findByLabelText(/CPU/));
+		userEvent.click(screen.getByLabelText(/CPU/));
 
-		userEvent.click(await screen.findByText("ARM"));
+		userEvent.click(screen.getByText("ARM"));
 		expect(mockHandler).toHaveBeenCalledWith(CpuType.ARM);
 	});
 });
