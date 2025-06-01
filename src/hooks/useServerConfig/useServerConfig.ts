@@ -3,7 +3,7 @@ import type { CpuType } from "appConstants";
 import type { State, Action } from "./types";
 import { evaluateConfigOptions } from "./evaluateConfigOptions";
 
-const initialState: State = {
+export const initialState: State = {
 	config: {
 		cpu: "",
 		memorySize: 4096,
@@ -12,7 +12,7 @@ const initialState: State = {
 	results: [],
 };
 
-const reducer = (state: State, action: Action): State => {
+export const reducer = (state: State, action: Action): State => {
 	console.log(action.type);
 	switch (action.type) {
 		case "SET_CPU":

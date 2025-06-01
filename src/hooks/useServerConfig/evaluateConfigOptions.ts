@@ -22,8 +22,12 @@ export const evaluateConfigOptions = (
 	// Rule 1:
 	// When select GPU Accelerator Card, only High Density Server would be available.
 	// And the memory must be greater or equal to 524,288MB. And CPU must be ARM.
-	if (hasGpuAccelerator && cpu === CpuType.ARM && memorySize >= 524288) {
-		return [ServerModels.HighDensityServer];
+	if (hasGpuAccelerator) {
+		if (cpu === CpuType.ARM && memorySize >= 524288) {
+			return [ServerModels.HighDensityServer];
+		}
+
+		return NO_OPTIONS;
 	}
 
 	// Rule 2:
@@ -46,8 +50,8 @@ export const evaluateConfigOptions = (
 		options.add(ServerModels.RackServer4U);
 		options.add(ServerModels.TowerServer);
 	} else {
-		options.add(ServerModels.RackServer4U);
-		options.delete(ServerModels.TowerServer);
+		options.add(ServerModels.TowerServer);
+		options.delete(ServerModels.RackServer4U);
 	}
 
 	// Rule 4:
