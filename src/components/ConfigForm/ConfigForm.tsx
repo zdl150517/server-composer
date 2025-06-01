@@ -17,7 +17,11 @@ export const ConfigForm: FC<ConfigFormProps> = ({ handlers, config }) => {
 	return (
 		<Box component="form" onSubmit={handleSubmit}>
 			<Stack alignItems="flex-start" spacing={2}>
-				<Stack direction="row" spacing={2} alignItems="flex-start">
+				<Stack
+					direction={{ xs: "column", sm: "row" }}
+					spacing={2}
+					alignItems="flex-start"
+				>
 					<CpuSelectField value={cpu} handleCpuChange={setCpu} />
 					<MemoryInputField
 						value={memorySize}
