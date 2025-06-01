@@ -47,6 +47,10 @@ export const reducer = (state: State, action: Action): State => {
 	}
 };
 
+/**
+ * Hook for managing server config option states.
+ * Providing handlers to update states and inferring server model results.
+ */
 export const useServerConfig = () => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 

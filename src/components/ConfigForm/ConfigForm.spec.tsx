@@ -14,6 +14,7 @@ const mockConfig = {
 	cpu: CpuType.ARM,
 	memorySize: 4096,
 	hasGpuAccelerator: false,
+	hasError: false,
 };
 
 describe("ConfigForm component", () => {
