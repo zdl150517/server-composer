@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 const mockHandlers = {
 	setCpu: (cpu: "" | CpuType) => null,
-	setMemory: (memory: number) => null,
+	setMemory: (memory: number, hasError: boolean) => null,
 	setGpu: (hasGpu: boolean) => null,
 	submit: () => null,
 };

@@ -8,12 +8,38 @@ describe("GpuToggleField component", () => {
 		expect(screen.getByText(/GPU Accelerator Card/)).toBeVisible();
 	});
 
-	it("can be checked and unchecked", () => {
-		render(<GpuToggleField handleGpuToggleChange={jest.fn()} />);
-		const checkBox = screen.getByRole("checkbox", {
-			name: /GPU Accelerator Card/,
-		});
-		userEvent.click(checkBox);
-		expect(checkBox).toBeChecked();
+	it("can be checked", () => {
+		render(<GpuToggleField value={true} handleGpuToggleChange={jest.fn()} />);
+		expect(
+			screen.getByRole("checkbox", {
+				name: /GPU Accelerator Card/,
+			}),
+		).toBeChecked();
+	});
+
+	it("can be unchecked", () => {
+		render(<GpuToggleField value={false} handleGpuToggleChange={jest.fn()} />);
+		expect(
+			screen.getByRole("checkbox", {
+				name: /GPU Accelerator Card/,
+			}),
+		).not.toBeChecked();
+	});
+
+	it("trigger handleGpuToggleChange on click", () => {
+		const mockHandleGpuToggleChange = jest.fn();
+		render(
+			<GpuToggleField
+				value={false}
+				handleGpuToggleChange={mockHandleGpuToggleChange}
+			/>,
+		);
+		userEvent.click(
+			screen.getByRole("checkbox", {
+				name: /GPU Accelerator Card/,
+			}),
+		);
+
+		expect(mockHandleGpuToggleChange).toBeCalled();
 	});
 });

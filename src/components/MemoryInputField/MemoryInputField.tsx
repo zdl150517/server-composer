@@ -50,7 +50,7 @@ export const MemoryInputField: FC<MemoryInputFieldProps> = ({
 			error={!!helperText}
 			helperText={helperText}
 			onValueChange={({ floatValue }) => {
-				if (!floatValue) {
+				if (floatValue === undefined) {
 					return;
 				}
 
