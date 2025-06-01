@@ -9,6 +9,10 @@ jest.mock("./evaluateConfigOptions", () => ({
 }));
 
 describe("serverConfig reducer", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+
 	it("should set CPU", () => {
 		const newState = reducer(initialState, {
 			type: "SET_CPU",

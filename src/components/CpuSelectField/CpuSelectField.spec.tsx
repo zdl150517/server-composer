@@ -4,6 +4,10 @@ import { CpuType } from "appConstants";
 import userEvent from "@testing-library/user-event";
 
 describe("CpuSelectField component", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+
 	it("renders component", () => {
 		render(
 			<CpuSelectField value={CpuType.POWER} handleCpuChange={jest.fn()} />,

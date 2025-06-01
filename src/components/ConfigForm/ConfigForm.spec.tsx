@@ -17,6 +17,10 @@ const mockConfig = {
 };
 
 describe("ConfigForm component", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+
 	it("renders child component", () => {
 		render(<ConfigForm config={mockConfig} handlers={mockHandlers} />);
 		expect(screen.getByLabelText(/CPU/)).toBeVisible();

@@ -3,6 +3,10 @@ import { CpuType, ServerModels, type NO_OPTION } from "appConstants";
 
 const NO_OPTIONS = "No Options";
 
+const RULE_ONE_HDS_SERVER_MIN_MEMORY = 524288;
+const RULE_THREE_RACK_SERVER_MIN_MEMORY = 131072;
+const RULE_FOUR_MIN_MEMORY = 2048;
+
 export const evaluateConfigOptions = (
 	config: ServerConfig,
 ): ServerModels[] | NO_OPTION => {
@@ -27,7 +31,7 @@ export const evaluateConfigOptions = (
 	// When select GPU Accelerator Card, only High Density Server would be available.
 	// And the memory must be greater or equal to 524,288MB. And CPU must be ARM.
 	if (hasGpuAccelerator) {
-		if (cpu === CpuType.ARM && memorySize >= 524288) {
+		if (cpu === CpuType.ARM && memorySize >= RULE_ONE_HDS_SERVER_MIN_MEMORY) {
 			return [ServerModels.HighDensityServer];
 		}
 
@@ -50,7 +54,7 @@ export const evaluateConfigOptions = (
 	// Rule 3:
 	// Memory size greater or equal to 131,072MB can be both 4U Rack Server and
 	// Tower Server. Lower than that can only be Tower Server.
-	if (memorySize >= 131072) {
+	if (memorySize >= RULE_THREE_RACK_SERVER_MIN_MEMORY) {
 		options.add(ServerModels.RackServer4U);
 		options.add(ServerModels.TowerServer);
 	} else {
@@ -60,7 +64,7 @@ export const evaluateConfigOptions = (
 
 	// Rule 4:
 	// Any Model must not have a lower than 2,048MB memory. Lower than that would be “No Options”.
-	if (memorySize < 2048) {
+	if (memorySize < RULE_FOUR_MIN_MEMORY) {
 		return NO_OPTIONS;
 	}
 

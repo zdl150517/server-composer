@@ -1,7 +1,8 @@
 import { type FC, useState } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import { NumericFormat } from "react-number-format";
-import { isNumberPowerOfTwo } from "../../utils";
+import { isNumberPowerOfTwo } from "utils";
+import { MIN_MEMORY_SIZE, MAX_MEMORY_SIZE } from "appConstants";
 
 import type { MemoryInputFieldProps } from "./types";
 
@@ -23,7 +24,7 @@ export const getMemorySizeErrorReason = (size: number): string | undefined => {
 		return "Memory size format incorrect.";
 	}
 
-	if (size < 4096 || size > 8388608) {
+	if (size < MIN_MEMORY_SIZE || size > MAX_MEMORY_SIZE) {
 		return "Memory size out of range. The range of this attribute is 4,096MB (included)-8,388,608MB (included).";
 	}
 

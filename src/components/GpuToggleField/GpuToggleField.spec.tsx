@@ -3,6 +3,10 @@ import { GpuToggleField } from "./GpuToggleField";
 import userEvent from "@testing-library/user-event";
 
 describe("GpuToggleField component", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+
 	it("renders component", () => {
 		render(<GpuToggleField handleGpuToggleChange={jest.fn()} />);
 		expect(screen.getByText(/GPU Accelerator Card/)).toBeVisible();

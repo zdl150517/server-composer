@@ -12,3 +12,6 @@ export enum CpuType {
 	POWER = "Power",
 	ARM = "ARM",
 }
+
+export const MIN_MEMORY_SIZE = 4096
+export const MAX_MEMORY_SIZE = 8388608
