@@ -7,6 +7,7 @@ const RULE_ONE_HDS_SERVER_MIN_MEMORY = 524288;
 const RULE_THREE_RACK_SERVER_MIN_MEMORY = 131072;
 const RULE_FOUR_MIN_MEMORY = 2048;
 
+// Derive a list of available server models based on server config, or no options if no one matches.
 export const evaluateConfigOptions = (
 	config: ServerConfig,
 ): ServerModels[] | NO_OPTION => {
